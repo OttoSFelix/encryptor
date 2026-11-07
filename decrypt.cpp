@@ -121,16 +121,13 @@ int main() {
         std::cout << "Too short input";
         return 1;
     }
-    std::cout << "length: " << input.size() << "\n";
 
     std::string result {""};
 
     std::string current {""};
     auto pointer {0uz};
     bool space {false};
-    while (pointer < input.size()) {
-        std::cout << pointer << "\n";
-                
+    while (pointer < input.size()) {                
         if (input[static_cast<int>(pointer)] == ' ') {
             if (current.size() > 0 && current.size() < 3) {
                 std::cout << "Invalid encryption input\n";
@@ -144,7 +141,6 @@ int main() {
 
         if (current.size() == 3) {
             if (current.size() < 3 || current.size() > 4) {
-                std::cout << "current too big or small\n";
                 std::cout << "Invalid encryption input\n";
                 return 1;
             }
@@ -159,16 +155,13 @@ int main() {
                     }
                 }
             }
-            std::cout << "current before utf8: " << current << "length: " << current.size() << "\n";
             if (utf8) {
                 ++pointer;
                 current += input[static_cast<int>(pointer)];
             }
-            std::cout << "current after utf8: " << current << "length: " << current.size() << "\n";
 
 
             std::string character {get_character(current, map)};
-            std::cout << "character: " << character << "\n";
             if (character == "|") {
                 std::cout << "Invalid encryption input\n";
                 return 1;
